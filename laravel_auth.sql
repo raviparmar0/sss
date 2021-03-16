@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2021 at 05:16 AM
+-- Generation Time: Mar 16, 2021 at 04:05 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -41,16 +41,18 @@ CREATE TABLE `apply_for_companies` (
   `d_cgpa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `resume` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `e_number` varchar(90) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `year` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `apply_for_companies`
 --
 
-INSERT INTO `apply_for_companies` (`id`, `s_name`, `email`, `b_name`, `c_name`, `cpi`, `c_back`, `p_10`, `p_12`, `dip`, `d_cgpa`, `resume`, `created_at`, `updated_at`) VALUES
-(3, '3', 'ravi@gmail.com', 'IT', 'Wipro', '8.55', '0', '66', '66', 'no', '-', '1613548718.pdf', '2021-02-17 02:28:38', '2021-02-17 02:28:38'),
-(4, '3', 'ravi@gmail.com', 'CE', 'Tcs', '9.55', '20', '88', '99', 'no', '-', '1613548736.pdf', '2021-02-17 02:28:56', '2021-02-17 02:28:56');
+INSERT INTO `apply_for_companies` (`id`, `s_name`, `email`, `b_name`, `c_name`, `cpi`, `c_back`, `p_10`, `p_12`, `dip`, `d_cgpa`, `resume`, `created_at`, `updated_at`, `e_number`, `year`) VALUES
+(8, 'mehul parmar', 'student@gmail.com', 'COMPUTER ENGINEERING', 'cybercom', '10', '0', '74.72', '89', 'No', '4.2', '170210116042.pdf', '2021-02-21 08:46:24', '2021-02-21 08:46:24', '170210116042', ''),
+(9, 'mehul parmar', 'student@gmail.com', 'COMPUTER ENGINEERING', 'cybercom', '9', '0', '89.12', '89.65', 'Yes', '8.9', '170210116042.pdf', '2021-02-21 08:53:04', '2021-02-21 08:53:04', '170210116042', '');
 
 -- --------------------------------------------------------
 
@@ -77,9 +79,7 @@ CREATE TABLE `assignments` (
 --
 
 INSERT INTO `assignments` (`id`, `created_at`, `updated_at`, `f_name`, `d_name`, `semester`, `a_name`, `due_date`, `file`, `point`, `dis`) VALUES
-(2, '2021-02-15 07:17:19', '2021-02-18 23:46:52', 'mehul1', 'IT', 8, 'python', '2021-02-19', '1613393239.pdf', '', ''),
-(4, '2021-02-19 00:05:25', '2021-02-19 00:05:25', 'mehul', 'IT', 7, 'ai', '2021-02-28', '1613712925.pdf', '', ''),
-(5, '2021-02-19 00:38:03', '2021-02-19 00:38:03', 'mehul', 'IT', 8, 'python 1', '2021-02-27', '1613714883.pdf', '10', 'hello my friend this is assignment of python practice programs\r\nso all student should have to submit this program with output.');
+(10, '2021-02-21 06:39:07', '2021-02-21 06:53:02', 'mehul', 'ELECTRONINCS & COMMUNICATION', 5, 'python', '2021-02-21', '1613909347.png', '10', 'first Assignment');
 
 -- --------------------------------------------------------
 
@@ -132,8 +132,8 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `created_at`, `updated_at`, `c_name`, `website`, `type`, `status`, `phone`, `b_name`, `address`, `file`) VALUES
-(6, '2021-02-16 01:00:53', '2021-02-16 01:00:53', 'abc', 'abc.com', 'ce', 'Active', '6541239871', 'INFORMATION TECHNOLOGY', 'cvv', '1613457053.pdf'),
-(7, '2021-02-16 01:43:59', '2021-02-16 01:43:59', 'hsrh', 'ftyr.in', 'gggggg', 'Active', '7894561230', 'PRODUCTION ENGINEERING', 'tyutfu', '1613459639.pdf');
+(8, '2021-02-21 07:08:58', '2021-02-21 07:10:00', 'cybercom', 'www.cybercom.com', 'IT', 'Active', '9081863659', 'ELECTRONINCS & COMMUNICATION', 'botad', '1613911138.jpg'),
+(10, '2021-03-07 04:55:47', '2021-03-07 04:55:47', 'rweyhwes', 'suu.in', 'IT', 'Active', '1234567890', 'INFORMATION TECHNOLOGY', 'jtdfc', '1615112747.pdf');
 
 -- --------------------------------------------------------
 
@@ -143,12 +143,21 @@ INSERT INTO `companies` (`id`, `created_at`, `updated_at`, `c_name`, `website`, 
 
 CREATE TABLE `events` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `start` datetime NOT NULL,
-  `end` datetime NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `e_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `s_date` date NOT NULL,
+  `e_date` date NOT NULL,
+  `dis` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `created_at`, `updated_at`, `e_name`, `s_date`, `e_date`, `dis`, `file`) VALUES
+(6, '2021-03-08 05:17:21', '2021-03-13 06:52:15', 'Women Empowerment', '2021-03-08', '2021-03-08', 'We Women Development Cell has organized a webinar on \"Women Empowerment - Fueling Growth” by Ms Ruzan Khambhtta, Chairman Wajra O\'force Empowerment Foundation on Women’s Day 08/03/2021 from 2.40 to 3.40 pm. All girl students and female staff are invited to join to get advantage. Google meet link to attend webinar is: https://meet.google.com/goc-njcq-njw', '1615200441.pdf');
 
 -- --------------------------------------------------------
 
@@ -183,7 +192,9 @@ CREATE TABLE `faculties` (
 --
 
 INSERT INTO `faculties` (`id`, `f_name`, `l_name`, `email`, `join_date`, `password`, `password_confirmation`, `m_number`, `gender`, `designation`, `department`, `dob`, `qualification`, `experience`, `interest`, `address`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 'mehul', 'parmar', 'mehul@gmail.com', '2021-02-14', '12345678', '12345678', '9898989898', 'Male', 'manager', 'IT', '2021-02-14', 'B.E.', '5 year', 'PHP', 'botad', '1613309816.jpg', '2021-02-14 08:06:56', '2021-02-14 08:06:56');
+(3, 'mehul', 'parmar', 'mehul@gmail.com', '2021-02-21', '12345678', '12345678', '9632587412', 'Male', 'B.E.', 'INFORMATION TECHNOLOGY', '2021-02-21', 'B.E.', '5 Year', 'PHP', 'botad', '1613899355.jpg', '2021-02-21 03:52:35', '2021-02-21 03:52:35'),
+(4, 'ravi', 'parmar', 'user1@gmail.com', '2021-02-21', '12345678', '12345678', '1234567896', 'Gender', 'B.E.', 'COMPUTER ENGINEERING', '2021-02-21', 'B.E.', '5 Year', '.Net', 'Botad', '1613899428.jpg', '2021-02-21 03:53:48', '2021-02-21 03:53:48'),
+(5, 'mahendra', 'parmar', 'mahendra@gmail.com', '2021-02-21', '12345678', '12345678', '9632587412', 'Male', 'B.E.', 'ELECTRONINCS & COMMUNICATION', '2021-02-21', 'B.E.', '5 Year', 'PHP', 'botad', '1613899823.jpg', '2021-02-21 04:00:23', '2021-02-21 04:00:23');
 
 -- --------------------------------------------------------
 
@@ -266,6 +277,31 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `selected_students`
+--
+
+CREATE TABLE `selected_students` (
+  `id` int(11) NOT NULL,
+  `s_name` varchar(40) NOT NULL,
+  `b_name` varchar(255) NOT NULL,
+  `e_number` varchar(12) NOT NULL,
+  `c_name` varchar(50) NOT NULL,
+  `year` int(6) NOT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `selected_students`
+--
+
+INSERT INTO `selected_students` (`id`, `s_name`, `b_name`, `e_number`, `c_name`, `year`, `updated_at`, `created_at`) VALUES
+(1, 'PARMAR MEHUL L.', 'ELECTRONINCS & COMMUNICATION', '170210116042', 'CYBERCOM', 2020, '2021-03-13 07:36:10', '2021-03-13 07:36:10'),
+(2, 'PARMAR MEHUL L.', 'ELECTRONINCS & COMMUNICATION', '170210116040', 'abc', 2020, '2021-03-13 07:43:43', '2021-03-13 07:43:43');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -283,7 +319,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('4qPLJPPsRWnU9rwC1WhWWNbh6ILnaMzXf1dpQw3E', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiVFg0eEwyUmJrdXpNNkpZM2M1VmV0T3hqcnRSU0xQYUlYNlBXM29SZyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MTp7aTowO3M6MTk6ImFzc2lnbm1lbnRfdXBsb2FkZWQiO31zOjM6Im5ldyI7YTowOnt9fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjU1OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvc3R1ZGVudC9zdWJtaXRfYXNzaWdubWVudF9zdHVkZW50Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJDhUUVBOUnZKWUU5NGRYc1ZlMXpMVHVWaUlRM3k2anVDTDNxNVNFcVJBRXFjY3VYZ1BRb2tlIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ4VFFQTlJ2SllFOTRkWHNWZTF6TFR1VmlJUTN5Nmp1Q0wzcTVTRXFSQUVxY2N1WGdQUW9rZSI7czoxOToiYXNzaWdubWVudF91cGxvYWRlZCI7czozNDoiQXNzaWdubWVudCBIYXMgQmVlbiBVcGxvYWRlZC4uLi4uISI7fQ==', 1613725676);
+('g52sEebQSuDnn6K1EjUoihXctTlksIrIwGmlUs1e', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiREFIOXZRWHl0d2J0M2xkM2NlUHI2czNqSzlobXRPTkZic3hDUktycyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1615729805),
+('RezGqqjJUISYMYdy7M3xiTZJuWAA43EeA7BHHO6t', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOGRtdk56SloydkJzQ09GQm5QbElaSGFXUW9TSmlxZmxZYU9JZmVmRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1615804168);
 
 -- --------------------------------------------------------
 
@@ -314,7 +351,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `f_name`, `l_name`, `email`, `password`, `password_confirmation`, `m_number`, `gender`, `department`, `dob`, `address`, `photo`, `created_at`, `updated_at`, `e_number`) VALUES
-(3, 'ravi2', 'parmar', 'ravi@gmail.com', '0123456789', NULL, '9876543210', 'Gender', 'IT', '2021-02-15', 'botad', '1613369401.jpg', '2021-02-15 00:40:01', '2021-02-16 01:05:06', '170210116043');
+(10, 'mehul', 'parmar', 'student@gmail.com', '123', NULL, '9632587412', 'Gender', 'COMPUTER ENGINEERING', '4152-12-04', '1245789632', '1613905101.jpg', '2021-02-21 05:28:21', '2021-02-21 06:54:37', '170210116042');
 
 -- --------------------------------------------------------
 
@@ -337,12 +374,7 @@ CREATE TABLE `upload_assignments` (
 --
 
 INSERT INTO `upload_assignments` (`id`, `a_name`, `c_date`, `s_file`, `created_at`, `updated_at`, `s_name`) VALUES
-(1, 'Python', '19-02-2021', '1613722259.pdf', '2021-02-19 02:40:59', '2021-02-19 02:40:59', ''),
-(2, 'AI', '19-02-2021', '1613725174.pdf', '2021-02-19 03:29:34', '2021-02-19 03:29:34', '3'),
-(3, 'Python', '19-02-2021', '1613725477.pdf', '2021-02-19 03:34:37', '2021-02-19 03:34:37', '3'),
-(4, 'Python', '19-02-2021', '1613725577.pdf', '2021-02-19 03:36:17', '2021-02-19 03:36:17', '3'),
-(5, 'Python', '19-02-2021', '1613725589.pdf', '2021-02-19 03:36:29', '2021-02-19 03:36:29', '3'),
-(6, 'Python', '19-02-2021', '1613725676.pdf', '2021-02-19 03:37:56', '2021-02-19 03:37:56', '3');
+(11, 'python', '21-02-2021', '170210116042_python.pdf', '2021-02-21 08:09:12', '2021-02-21 08:09:12', 'mehul parmar');
 
 -- --------------------------------------------------------
 
@@ -372,11 +404,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `utype`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin@gmail.com', NULL, '$2y$10$e9NFm3d4.h8QInaCoOj0tub2JmKAYOrdH/rRFFmGS.Xn6ParxFOPm', NULL, NULL, NULL, NULL, NULL, 'ADM', '2021-02-14 08:04:40', '2021-02-14 08:04:40'),
-(2, 'mehul', 'mehul@gmail.com', NULL, '$2y$10$DJvGcCiKARYCeZffU6nAAesBfh1EUh4lIicyAW8Qd5jwNi/cAsQv.', NULL, NULL, NULL, NULL, NULL, 'FAC', '2021-02-14 08:06:56', '2021-02-14 08:06:56'),
-(4, 'mehul1', 'mehul1@gmail.com', NULL, '$2y$10$USPBUL3xl4gZMDt6CdnHCuu.mWRPF5XsyvTmQvu8qNySOMxiHCGQa', NULL, NULL, NULL, NULL, NULL, 'STU', '2021-02-14 08:15:32', '2021-02-14 08:15:32'),
-(5, '3', 'ravi@gmail.com', NULL, '$2y$10$8TQPNRvJYE94dXsVe1zLTuViIQ3y6juCL3q5SEqRAEqccuXgPQoke', NULL, NULL, NULL, NULL, NULL, 'STU', '2021-02-15 00:40:01', '2021-02-16 01:05:06'),
-(7, 'jay', 'jay@gmail.com', NULL, '$2y$10$SHyyFK6pdx1sTzTC2PP/SOhF/lF/4VVohZDWD8Kbe6ECVv2xWuT4G', NULL, NULL, NULL, NULL, NULL, 'STU', '2021-02-15 04:47:36', '2021-02-15 04:47:36'),
-(8, 'gh', 'ghl@gmail.com', NULL, '$2y$10$NTz32d7pWVTJkxkWPdY3HOOPjsOJcd1pMMUUILqtYaC05L9ejcKTq', NULL, NULL, NULL, NULL, NULL, 'STU', '2021-02-15 05:15:53', '2021-02-15 05:15:53');
+(10, 'mehul', 'mehul@gmail.com', NULL, '$2y$10$oqjQtpM8kNSMgKjEjwu5MepKqSjZgIs16juBbUmg7xsAoiaYXIDyS', NULL, NULL, NULL, NULL, NULL, 'FAC', '2021-02-21 03:52:35', '2021-02-21 03:52:35'),
+(12, 'mahendra', 'mahendra@gmail.com', NULL, '$2y$10$X2yAVovTwQLjzUMZ3cy.YOsPXJywF8cunUoUhwd4mZqFPcou61Y0i', NULL, NULL, NULL, NULL, NULL, 'FAC', '2021-02-21 04:00:23', '2021-02-21 04:00:23'),
+(16, 'mehul', 'student@gmail.com', NULL, '$2y$10$QccfOPZItic8HehhmrjDRu4GNzfCFl67D6xHTBWBxWWqGOnFXIYp.', NULL, NULL, NULL, NULL, NULL, 'STU', '2021-02-21 05:28:21', '2021-02-21 06:54:37');
 
 --
 -- Indexes for dumped tables
@@ -446,6 +476,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `selected_students`
+--
+ALTER TABLE `selected_students`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
@@ -480,13 +516,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `apply_for_companies`
 --
 ALTER TABLE `apply_for_companies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `branches`
@@ -498,19 +534,19 @@ ALTER TABLE `branches`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `faculties`
 --
 ALTER TABLE `faculties`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -531,22 +567,28 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `selected_students`
+--
+ALTER TABLE `selected_students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `upload_assignments`
 --
 ALTER TABLE `upload_assignments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
